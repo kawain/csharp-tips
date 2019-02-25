@@ -1,0 +1,63 @@
+﻿<Window x:Class="WpfDataGridTest.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:local="clr-namespace:WpfDataGridTest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid
+            ItemsSource="{Binding MemoList}"
+            SelectedItem="{Binding Item}"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            Grid.Column="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="カテゴリ" Binding="{Binding Category.Name}"/>
+                <DataGridTextColumn Header="タイトル" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="注目度" Binding="{Binding Attention}"/>
+            </DataGrid.Columns>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </DataGrid>
+
+        <ScrollViewer Grid.Column="1">
+            <StackPanel>
+                
+                <TextBlock>カテゴリ</TextBlock>
+                
+                <ComboBox
+                    ItemsSource="{Binding CategoryList}"
+                    SelectedValue="{Binding ComboBoxItem}"
+                    DisplayMemberPath="Name"/>
+
+                <TextBlock>タイトル</TextBlock>
+                
+                <TextBox Text="{Binding Item.Title}"/>
+
+                <TextBlock>内容</TextBlock>
+                <TextBox
+                    AcceptsReturn="True"
+                    AcceptsTab="True"
+                    VerticalScrollBarVisibility="Auto"
+                    HorizontalScrollBarVisibility="Auto"
+                    Height="300"
+                    Text="{Binding Item.Detail}"/>
+
+                <Button Content="ボタン" Command="{Binding Button1Command}"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
