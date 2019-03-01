@@ -9,7 +9,7 @@
     <Import_RootNamespace>SharedProject</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)CategoryModel1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CategoryModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MemoModel1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MemoModel2.cs" />
