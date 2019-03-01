@@ -1,4 +1,8 @@
-# How to add System.Windows.Interactivity to project?
+# DataGridの使い方
 
-https://stackoverflow.com/questions/8360209/how-to-add-system-windows-interactivity-to-project
-
+- 基本
+- Dapper、Prism.Core、System.Data.SQLite.Core使用
+- ComboBox SelectedValue LINQ
+- UpdateSourceTrigger=Explicit
+- CommandParameter="{Binding ElementName=}"
+- など

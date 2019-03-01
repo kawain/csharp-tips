@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>67a22d15-aba9-49cd-86e9-ca31a1f5f171</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>SharedProject</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CategoryModel1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DB.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MemoModel1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MemoModel2.cs" />
+  </ItemGroup>
+</Project>

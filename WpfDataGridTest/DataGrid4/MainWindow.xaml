@@ -1,0 +1,65 @@
+﻿<Window x:Class="DataGrid4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataGrid4"
+        mc:Ignorable="d"
+        Name="MyWindow"
+        Title="MainWindow" Height="450" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid
+            Name="MyDataGrid"
+            ItemsSource="{Binding MemoList}"
+            SelectedItem="{Binding MemoItem}"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            Grid.Column="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="カテゴリ" Binding="{Binding Category.Name}"/>
+                <DataGridTextColumn Header="タイトル" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="注目度" Binding="{Binding Attention}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <ScrollViewer Grid.Column="1">
+            <StackPanel>
+
+                <TextBlock>カテゴリ</TextBlock>
+
+                <TextBlock Text="{Binding MemoItem.Category.Name}"/>
+
+                <ComboBox
+                    Name="MyComboBox"
+                    ItemsSource="{Binding CategoryList}"
+                    SelectedValue="{Binding MemoItem.Category,UpdateSourceTrigger=Explicit}"
+                    DisplayMemberPath="Name"/>
+
+                <TextBlock>タイトル</TextBlock>
+
+                <TextBox Name="MyTextBox1" Text="{Binding MemoItem.Title,UpdateSourceTrigger=Explicit}"/>
+
+                <TextBlock>内容</TextBlock>
+                <TextBox
+                    Name="MyTextBox2"
+                    Text="{Binding MemoItem.Detail,UpdateSourceTrigger=Explicit}"
+                    AcceptsReturn="True"
+                    AcceptsTab="True"
+                    VerticalScrollBarVisibility="Auto"
+                    HorizontalScrollBarVisibility="Auto"
+                    Height="250"/>
+
+                <Button Content="ボタン" Command="{Binding Button1Command}" CommandParameter="{Binding ElementName=MyWindow}"/>
+
+                <Button Content="クリアボタン"/>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
